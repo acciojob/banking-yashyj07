@@ -12,6 +12,11 @@ public class StudentAccount extends BankAccount{
         this.institutionName = institutionName;
     }
 
+    public StudentAccount(String institutionName) {
+        super();
+        this.institutionName = institutionName;
+    }
+
     public StudentAccount() {
     }
 
