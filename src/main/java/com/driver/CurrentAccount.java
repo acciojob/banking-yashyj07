@@ -89,11 +89,6 @@ public class CurrentAccount extends BankAccount{
 //    }
 
     public void validateLicenseId() throws Exception {
-        // A trade license Id is said to be valid if no two consecutive characters are same
-        // If the license Id is valid, do nothing
-        // If the characters of the license Id can be rearranged to create any valid license Id
-        // If it is not possible, throw "Valid License can not be generated" Exception
-
         char [] charArray = this.tradeLicenseId.toCharArray();
         int i = 0;
         int j = i+1;
@@ -102,14 +97,12 @@ public class CurrentAccount extends BankAccount{
             if (charArray[i] != charArray[j]) {
                 i++;
                 j++;
-            }
-
-            else {
-                while (charArray[i] == charArray[j]) {
+            } else {
+                while (j < charArray.length && charArray[i] == charArray[j]) {
                     j++;
-                    if (j >= charArray.length) throw new Exception("Valid License can not be generated");
-
                 }
+
+                if (j >= charArray.length) throw new Exception("Valid License can not be generated");
 
                 char temp = charArray[i+1];
                 charArray[i+1] = charArray[j];
@@ -121,7 +114,6 @@ public class CurrentAccount extends BankAccount{
 
         String str = new String(charArray);
         this.tradeLicenseId = str;
-
     }
 
 }
